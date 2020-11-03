@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+
+    
+    
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript">
+function googleTranslateFunction(){
+new google.translate.TranslateElement({pageLanguage:'en', layout:google.translate.TranslateElement.InlineLayout.VERTICAL},'google_translate_element');
+} </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateFunction"></script>
+  <script>
+    function changecolor(){
+      document.getElementById("color").style.color=document.getElementById("colorpick").value;
+    }
+    </script>
+   <script>
+   onload = function() {
+	    if ('speechSynthesis' in window) with(speechSynthesis) {
+
+	        var playEle = document.querySelector('#play');
+	        var pauseEle = document.querySelector('#pause');
+	        var stopEle = document.querySelector('#stop');
+	        var flag = false;
+
+	        playEle.addEventListener('click', onClickPlay);
+	        pauseEle.addEventListener('click', onClickPause);
+	        stopEle.addEventListener('click', onClickStop);
+
+	        function onClickPlay() {
+	            if (!flag) {
+	                flag = true;
+	                utterance = new SpeechSynthesisUtterance(document.querySelector('article').textContent);
+	                utterance.voice = getVoices()[0];
+	                utterance.rate = 0.78;
+	                utterance.pitch = 1;
+	                utterance.lang = "en-us";
+	                utterance.onend = function() {
+	                    flag = false;
+	                    playEle.className = pauseEle.className = '';
+	                    stopEle.className = 'stopped';
+	                };
+	                playEle.className = 'played';
+	                stopEle.className = '';
+	                speak(utterance);
+	            }
+	            if (paused) { /* unpause/resume narration */
+	                playEle.className = 'played';
+	                pauseEle.className = '';
+	                resume();
+	            }
+	        }
+
+	        function onClickPause() {
+	            if (speaking && !paused) { /* pause narration */
+	                pauseEle.className = 'paused';
+	                playEle.className = '';
+	                pause();
+	            }
+	        }
+
+	        function onClickStop() {
+	            if (speaking) { /* stop narration */
+	                /* for safari */
+	                stopEle.className = 'stopped';
+	                playEle.className = pauseEle.className = '';
+	                flag = false;
+	                cancel();
+
+	            }
+	        }
+
+	    }
+
+	    else { /* speech synthesis not supported */
+	        msg = document.createElement('h5');
+	        msg.textContent = "Detected no support for Speech Synthesis";
+	        msg.style.textAlign = 'center';
+	        msg.style.backgroundColor = 'red';
+	        msg.style.color = 'white';
+	        msg.style.marginTop = msg.style.marginBottom = 0;
+	        document.body.insertBefore(msg, document.querySelector('div'));
+	    }
+
+	}</script>
+  <style type="text/css">
+
+  .goog-te-combo{
+background-color: #19db39fc;
+border-left: 0pxsolid#d5d5d5;
+border-top: 0pxsolid#9b9b9b;
+border-bottom: 0pxsolid#e8e8e8;
+border-right: 0pxsolid#d5d5d5;
+font-size: 12.2pt;
+display: inline-block;
+cursor: pointer;
+margin-top: 11px;
+zoom: 1.12;
+display: inline;
+padding-top: 4.5px;
+padding-bottom: 4.5px;
+border-radius: 5px;
+
+}
+  .goog-te-combo option{
+
+background-color: rgba(106, 252, 203, 0.945);
+  }
+.goog-te-gadget{
+font-size:0;
+}
+.goog-logo-link{
+display:none!important;
+
+}
+.goog-te-gadget-icon {
+margin-left: 2px;
+width: 0px;
+height: 0px;
+border: none;
+vertical-align: middle;
+}
+
+ #buttons{
+background-color: rgba(195, 0, 255, 0.63);
+margin-right: 16px;
+border-radius: 8px;
+ } 
+ #play:hover,#pause:hover,#stop:hover {
+	background-color:  rgba(0, 110, 255, 0.63);
+}
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a id="logo" class="navbar-brand" href="index.html"> <img src="logo.jpeg" width="80" height="45" alt="logo"
+        loading="lazy"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+         <a id="logo1" class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a id="logo2" class="nav-link" href="About us new.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a id="logo3" class="nav-link" href="contact.html">Contact Us</a></li>
+        <li class="nav-item dropdown">
+          <a id="donate" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            DONATE </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="Donate.html">PM Care fund 
+              <a class="dropdown-item" href="Donate2.html">Give India </a>
+              <a class="dropdown-item" href="Donate3.html">ISNO(Indian Society of Neuro Oncology )</a> 
+              <a class="dropdown-item" href="Donate4.html">Child heart foundation</a>
+							<a class="dropdown-item" href="Donate5.html">Tuberculosis Association of India</a>
+          </div>
+        </li>
+      </ul>
+      <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="buttons"   id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Speak
+  </button>
+  <div class="dropdown-menu"   aria-labelledby="dropdownMenu2">
+    <a class="dropdown-item" id=play  >PLAY </a><hr>
+    <a class="dropdown-item" id=pause >PAUSE</a><hr>
+    <a class="dropdown-item" id=stop  >STOP</a>
+  </div>
+</div><br>
+     <div style="margin-right: 20px;"   id="google_translate_element"></div><br>
+      <input type="button" value="select color" class="btn btn-info btn-lg" onclick="changecolor()"/>
+      <input  class="btn btn-warning btn-lg" type="color" id="colorpick"/>
+     
+    </div>
+  </nav>
+<article  id="text-to-speech">
+    <div class="container" id="color"  class="BgImg">
+        <div class="card">
+            <h1>Blood Cancer</h1>  
+            <div class="contest">
+                <ul>
+                    <li>
+                    <a  href="#overview"><h4> OVERVIEW</h4></a>
+                    </li>
+
+                    
+                    <li>
+                    <a href="#symptoms"><h4>SYMPTOMS</h4></a>
+                    </li>
+
+                    <li>
+                    <a href="#causes"><h4>CAUSES</h4></a>
+                    </li>
+
+                    <li>
+                    <a href="#Prevention"><h4>PREVENTION</h4></a>
+                    </li>
+
+                    <li>
+                        <a href="#treatment"><h4>TREATMENT</h4></a>
+                        </li>
+
+                    <li>
+                        <a href="#whattoeat"><h4>WHAT TO EAT</h4></a>
+                    </li>
+                    
+                </ul>
+            </div>
+                <img class="imgBx" src="blood cancer.jpg" >
+            <div class="content">
+                <h2 id="overview">OVERVIEW</h2>
+                <p id="color">As its name suggests, this type of cancer affects the production and function of your blood cells. 
+                    This type of cancer starts in bone marrow which is the integral source of blood production. 
+                    Stem cells in your bone marrow mature and develop into three types of blood cells: red blood cells, white blood cells, 
+                    or platelets. In case of cancer, the blood production process is interrupted due to the growth of an abnormal type of 
+                    blood cell. The various types include Leukemia, Lymphoma and Myeloma.</p>
+               
+
+                    <h3 id="color"> Type of Blood Cancer</h3>
+                    
+                        <p id="color">The three main types of blood cancer are leukemia, lymphoma and myeloma:</p>
+                        <h5>a. Leukemia</h5>
+                        <p id="color"> Leukemia is a blood cancer that originates in the blood and bone marrow. It occurs when the body creates too many abnormal white 
+                            blood cells and interferes with the bone marrow’s ability to make red blood cells and platelets.</p>
+                       <h5>b. lymphoma </h5>
+                        <p  id="color"> Non-Hodgkin lymphoma is a blood cancer that develops in the lymphatic system from cells called lymphocytes, a type of 
+                            white blood cell that helps the body fight infections. </p>
+                        <p id="color"> Hodgkin lymphoma is a blood cancer that develops in the lymphatic system from cells called lymphocytes. Hodgkin lymphoma is 
+                            characterized by the presence of an abnormal lymphocyte called the Reed-Sternberg cell.</p>
+                        <h5>c. Myeloma</h5>
+                        <p id="color"> Multiple myeloma is a blood cancer that begins in the blood’s plasma cells, a type of white blood cell made in the bone marrow. </p>
+
+                    
+
+                        <h3 id="symptoms">SYMPTOMS </h3>
+                        <p id="color"> Some common blood cancer symptoms include:.</p>
+                        <p id="color">
+                          <ul id="prevention">
+                            <li>Fever, Chills</li>
+                            <li>Persistent fatigue, Weakness</li>
+                            <li>Loss of appetite, Nausea</li>
+                            <li>Unexplained weight loss</li>
+                            <li>Night sweats</li>
+                            <li>Bone/joint pain</li>
+                            <li>Abdominal discomfort</li> 
+                            <li>Headaches</li>
+                            <li>Shortness of breath</li>
+                            <li>Frequent infections</li>
+                            <li>Itchy skin or skin rash</li>
+                            <li>Swollen lymph nodes in the neck, Underarms or Groin</li>    
+                          </ul>
+                        </p>
+        
+        
+                
+                        <h3 id="causes">CAUSES</h3>
+                        <P id="color">Although the specific cause of blood cancer is unknown, various factors are associated with its onset. Some causes are:</P>
+                        <p id="color">
+                          <ul id="prevention">
+                            <li>Aging</li>
+                            <li>Family history</li>
+                            <li>Weak immune system</li>
+                            <li>Certain infections</li>   
+                          </ul>
+                        </p>  
+        
+                <h3 id="Prevention">PREVENTION</h3>
+                
+                <p id="color">Scientists aren’t sure of the cause of many blood cancers, but staying away from factors that increase your risk can help. </p>
+                <p id="color">Avoid exposure to radiation, chemicals such as pesticides or benzene, and to smoking or tobacco in any form.</p>
+                <p id="color">Additional lifestyle behaviors, such as staying active and eating a healthy diet can help reduce your risk for developing a 
+                    variety of cancers and other diseases.While there is still a long way to go, the improvements in survival rates are a promising beginning</p>
+                
+                <h3 id="treatment">TREATMENT</h3>
+                <P id="color">Treatment for blood cancer depends on the type of cancer, your age, how fast the cancer is progressing, where the cancer 
+                    has spread and other factors. Some common blood cancer treatments include:</P>
+                <h5>Stem cell transplantation: </h5>    
+                <p id="color">A stem cell transplant infuses healthy blood-forming stem cells into the body. Stem cells may be collected from the bone marrow, 
+                    circulating blood and umbilical cord blood.</p>
+                <h5>Chemotherapy:</h5>
+                <p id="color">Chemotherapy uses anticancer drugs to interfere with and stop the growth of cancer cells in the body. Chemotherapy for blood cancer 
+                    sometimes involves giving several drugs together in a set regimen. This treatment may also be given before a stem cell transplant</p>
+                <h5>Radiation therapy:</h5>
+                <p id="color">Radiation therapy may be used to destroy cancer cells or to relieve pain or discomfort. It may also be given before a stem cell transplant</p>
+               
+               
+                <h3 id="whattoeat">WHAT TO EAT</h3>
+                <div class="diet">         
+                    <div class="gallery">
+                    <a target="_blank" href="bcancerbroccoli.jpg" >
+                        <img src="bcancerbroccoli.jpg"  >
+                    </a>
+                    <div class="desc" >Broccoli</div>
+                    </div>
+
+                    <div class="gallery">
+                    <a target="_blank" href="bcancercitrus.jpg" ">
+                        <img src="bcancercitrus.jpg"  >
+                    </a>
+                    <div class="desc" >Citrus</div>
+                     </div>
+                    <div class="gallery">
+                    <a target="_blank" href="bcancertofu.jpg">
+                        <img src="bcancertofu.jpg" >
+                    </a>
+                    <div class="desc" >Tofu</div>
+                    </div>
+
+                   
+
+                <P id="color" style="float: left;">Power up with a plant-based diet by eating mostly vegetables, fruits,
+                   whole grains and beans. Plant-based eating means 25% or less of your foods 
+                    are animal proteins such as meat, poultry, eggs, fish, and dairy products. 
+                    To get enough protein, swap animal proteins for lentils, dried beans, seeds, 
+                    nuts, tofu and other plant proteins.</P>
+                
+
+                    <div class="footer">
+                      <hr>
+                      <h3>National Management of Diseases Control <h3>
+                          <p>Thakur College Of Engineering And Technology</p>
+                          <p>A-Block, Thakur Educational Campus,</p>
+                          <p>Shyamnarayan Thakur Marg, Thakur Village,</p>
+                          <p>Kandivali(E). Mumbai - 400101.</p>
+                      
+                          <p>Privacy Policy</p>
+                          <h6>All rights reserved@ 2019-20</h6>
+                          <a href="About us new.html"> <p>About Us</p></a>
+        
+        <p>Connect to NMDC</p>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <a href="https://www.instagram.com/nmdc4244/"> <button class="btn"><img src="instagram.jpg"></button></a> 
+      <a href="https://www.facebook.com/nm.dc.50"> <button class="btn" ><img src="facebook.png"></i></button></a>   
+      <a href="https://twitter.com/home?lang=en"><button class="btn" ><img src="twitter.png" ></i></button></a>
+      <a href="https://youtu.be/lP9KM6ZXEx0"> <button class="btn" ><img src="youtube.png"></i></button></a>       
+  </div>
+                    </div>
+         
+            </div>
+        </div>
+    </div>  
+</article>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
