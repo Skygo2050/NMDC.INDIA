@@ -1,1 +1,1 @@
-# NMDC.INDIA
+# NMDC
